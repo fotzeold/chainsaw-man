@@ -5,9 +5,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f3282d;
+  background: /*url('./assets/img/video/hero/denji.png') 100% 100% /430px 700px, url('./assets/img/video/hero/pouer.png') 0% 100% /430px 700px,*/ linear-gradient(45deg, #e52629 0%, #ca1f22 30%, #b31111 66%, #970c11 100%);
+  background-repeat: no-repeat;
+  background-position: cover;
+  background-attachment: fixed;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media all and (max-width: 768px) {
+	body{
+		background: linear-gradient(45deg, #e52629 0%, #ca1f22 30%, #b31111 66%, #970c11 100%);
+		background-attachment: fixed;
+	}
 }

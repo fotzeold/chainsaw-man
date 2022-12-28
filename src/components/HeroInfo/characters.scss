@@ -1,0 +1,27 @@
+.vertical-slick {
+	max-width: 1100px;
+	margin: 140px auto 0 auto;
+	.character-container{
+		position: relative;
+		height: 535px;
+		img{
+			height: 530px;
+			display: block;
+			margin: 0 auto;
+			position: relative;
+			left: -360px;
+		}
+	}
+
+	.slick-prev{
+		position: absolute;
+		top: -5%;
+		left: 50%;
+	}
+
+	.slick-next{
+		position: absolute;
+		top: 105%;
+		left: 50%;
+	}
+}
