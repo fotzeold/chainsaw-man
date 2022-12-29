@@ -23,3 +23,8 @@ code {
 		background-attachment: fixed;
 	}
 }
+.container{
+	position: relative;
+	max-width: 1400px;
+	margin: 0 auto;
+}

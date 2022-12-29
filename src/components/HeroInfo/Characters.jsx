@@ -1,51 +1,53 @@
-import Slider from "react-slick";
+import { useState } from "react";
+import CharacterServices from "../../services/CharacterServices";
 
 import './characters.scss';
 import '../../../node_modules/slick-carousel/slick/slick.css'
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 
 const Characters = () => {
-	const settings = {
-		dots: false,
-		infinite: true,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		vertical: true,
-		verticalSwiping: true,
-		beforeChange: function (currentSlide, nextSlide) {
-			console.log("before change", currentSlide, nextSlide);
-		},
-		afterChange: function (currentSlide) {
-			console.log("after change", currentSlide);
-		}
-	};
-	return (
-		<div>
-			<Slider className="vertical-slick" {...settings}>
-				<div className="character-container">
-					<img src="https://chainsawman.dog/assets/img/chara/chara_1_stand.png" alt="" />
-				</div>
-				<div className="character-container">
-					<img src="https://chainsawman.dog/assets/img/chara/chara_5_stand.png" alt="" />
-				</div>
-				<div className="character-container">
-					<img src="https://chainsawman.dog/assets/img/chara/chara_2_stand.png" alt="" />
-				</div>
-				<div className="character-container">
-					<img src="https://chainsawman.dog/assets/img/chara/chara_4_stand.png" alt="" />
-				</div>
-				<div className="character-container">
-					<img src="https://chainsawman.dog/assets/img/chara/chara_3_stand.png" alt="" />
-				</div>
-				<div className="character-container">
-					<img src="https://chainsawman.dog/assets/img/chara/chara_6_stand.png" alt="" />
-				</div>
-				<div className="character-container">
-					<img src="https://chainsawman.dog/assets/img/chara/chara_7_stand.png" alt="" />
-				</div>
+	const { characters } = CharacterServices();
+	const [currTub, setCurrTub] = useState(0);
 
-			</Slider>
-		</div>
+	const onNext = () => {
+		if (currTub === 14) {
+			setCurrTub(0);
+		} else {
+			setCurrTub(currTub => currTub + 1);
+		}
+	}
+
+	const onPrev = () => {
+		if (currTub === 0) {
+			setCurrTub(14);
+		} else {
+			setCurrTub(currTub => currTub - 1);
+		}
+	}
+
+	return (
+		<section>
+			<button className="prev" onClick={onPrev}></button>
+			{characters.map((e, index) => {
+				if (currTub === index) {
+					return (
+						<div className="character-container">
+							<div className="row-slide">
+								<img src={e.thumbnail} alt={e.name} />
+								<div className="slide-content">
+									<div className="content-wrapper">
+										<h2>{e.name}</h2>
+										<p>{e.descriptions}</p>
+										<button className="more-info">View more info &#10132;</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					)
+				}
+			})}
+			<button className="next" onClick={onNext}></button>
+		</section>
 	);
 }
 

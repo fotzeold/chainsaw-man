@@ -1,10 +1,14 @@
+import Header from "../Header/Header";
 import Watch from "../WatchWindow/Watch";
 import Characters from "../HeroInfo/Characters";
 
 const App = () => {
 
 	return (
-		<Characters />
+		<div className="container">
+			<Header />
+			<Characters />
+		</div>
 	)
 }
 
