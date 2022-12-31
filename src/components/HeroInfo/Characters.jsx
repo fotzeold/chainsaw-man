@@ -31,7 +31,7 @@ const Characters = () => {
 			{characters.map((e, index) => {
 				if (currTub === index) {
 					return (
-						<div className="character-container">
+						<div className="character-container" key={index + '0'}>
 							<div className="row-slide">
 								<img src={e.thumbnail} alt={e.name} />
 								<div className="slide-content">
@@ -44,6 +44,8 @@ const Characters = () => {
 							</div>
 						</div>
 					)
+				} else {
+					return null;
 				}
 			})}
 			<button className="next" onClick={onNext}></button>

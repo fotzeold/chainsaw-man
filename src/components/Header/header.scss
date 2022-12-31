@@ -36,6 +36,8 @@ header{
 		}
 	}
 	input{
+		position: relative;
+		z-index: 5;
 		width: 190px;
 		background-color: rgba(240, 248, 255, 0.166);
 		border-radius: 50px;

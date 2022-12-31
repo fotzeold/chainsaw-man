@@ -1,17 +1,39 @@
 import { useState, useEffect } from "react";
+
+import SearchField from "../SearchField/SearchField";
 import CharacterServices from "../../services/CharacterServices";
+
 import './header.scss';
 
 const Header = () => {
 	const [valueInp, setValueInp] = useState(null);
 	const [searchedChar, setSearchedChar] = useState([]);
-
+	const [actSearchField, setActSearchField] = useState(false);
 	const { characters } = CharacterServices();
 
-	useEffect(() => onSearched(), [searchedChar])
+	useEffect(() => onSearched(), [valueInp])
 
 	const onSearched = () => {
-		setSearchedChar(characters.filter(e => e.name.includes(valueInp)));
+		if (valueInp) {
+			document.querySelector(".searched-content").classList.add("searched-content-active");
+			setActSearchField(true);
+			const lower = valueInp.toLowerCase();
+			setSearchedChar(characters.filter(e => {
+				const lowerElement = e.name.toLowerCase();
+				if (lowerElement.includes(lower)) return e;
+			}));
+		} else if (valueInp === '') {
+			onBlured();
+		} else {
+			setSearchedChar([]);
+		}
+	}
+
+	const onBlured = () => {
+		setValueInp(null)
+		document.querySelector(".searched-content").classList.remove("searched-content-active");
+		setActSearchField(false);
+		document.querySelector(".search-hero-input").value = '';
 	}
 
 	const togglerBurger = () => {
@@ -58,23 +80,15 @@ const Header = () => {
 					<div className="search">
 						<input
 							type="text"
+							className="search-hero-input"
 							placeholder='Find you hero'
 							onChange={(e) => setValueInp(e.target.value)}
+							onBlur={() => onBlured()}
 						/>
 					</div>
 				</div>
 			</header >
-			<div className="searched-content">
-				{searchedChar.length > 0 ?
-					searchedChar.map(e => {
-						return (
-							<div className="hero">
-								<h4>{e.name}</h4>
-							</div>
-						)
-					})
-					: null}
-			</div>
+			<SearchField searchedChar={searchedChar} actSearchField={actSearchField} />
 		</>
 	)
 }
