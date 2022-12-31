@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+	
 	section{
 		padding: 90px 10px 10px 10px;
 	}
@@ -40,6 +42,7 @@
 		}
 		h2{
 			font-size: 32px;
+			font-family: 'Ubuntu', sans-serif;
 		}
 		p{
 			font-size: 22px;
@@ -118,4 +121,10 @@
 	}
 
 }
+
+@media all and (max-width: 960px) {
+	section{
+		padding: 30px 10px 10px 10px;
+	}
+}	
 
