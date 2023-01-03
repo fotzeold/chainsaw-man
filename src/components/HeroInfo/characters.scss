@@ -49,13 +49,17 @@
 			height: auto;
 		}
 		.more-info{
+			display: block;
 			width: 160px;
 			background-color: rgba(240, 248, 255, 0.166);
 			border-radius: 50px;
 			height: 40px;
 			cursor: pointer;
+			text-align: center;
 			font-size: 16px;
-			line-height: 20px;
+			text-decoration: none;
+			color: black;
+			line-height: 36px;
 			transition: all 0.3s ease-out;
 		}
 		.more-info:hover{

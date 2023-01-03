@@ -38,7 +38,7 @@ const Characters = () => {
 									<div className="content-wrapper">
 										<h2>{e.name}</h2>
 										<p>{e.descriptions}</p>
-										<button className="more-info">View more info &#10132;</button>
+										<a target="_blank" href={e.url} className="more-info">View more info &#10132;</a>
 									</div>
 								</div>
 							</div>

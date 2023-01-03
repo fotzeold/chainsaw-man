@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 
 import SearchField from "../SearchField/SearchField";
 import CharacterServices from "../../services/CharacterServices";
@@ -30,10 +31,12 @@ const Header = () => {
 	}
 
 	const onBlured = () => {
-		setValueInp(null)
-		document.querySelector(".searched-content").classList.remove("searched-content-active");
-		setActSearchField(false);
-		document.querySelector(".search-hero-input").value = '';
+		setTimeout(() => {
+			setValueInp(null)
+			document.querySelector(".searched-content").classList.remove("searched-content-active");
+			setActSearchField(false);
+			document.querySelector(".search-hero-input").value = '';
+		}, 200)
 	}
 
 	const togglerBurger = () => {
@@ -63,16 +66,22 @@ const Header = () => {
 						<nav className="nav" id="nav">
 							<ul>
 								<li className="p-2">
-									<a
+									<NavLink
+										to="/"
+										className="links"
+										style={({ isActive }) => ({ color: isActive ? "#000" : "rgb(62, 62, 62)" })}
 										onClick={removeBurger}
 									>Characters
-									</a>
+									</NavLink>
 								</li>
 								<li className="p-2">
-									<a
+									<NavLink
+										to="/movies"
+										className="links"
+										style={({ isActive }) => ({ color: isActive ? "#000" : "rgb(62, 62, 62)" })}
 										onClick={removeBurger}
 									>Movies
-									</a>
+									</NavLink>
 								</li>
 							</ul>
 						</nav>
@@ -86,9 +95,11 @@ const Header = () => {
 							onBlur={() => onBlured()}
 						/>
 					</div>
+
 				</div>
 			</header >
 			<SearchField searchedChar={searchedChar} actSearchField={actSearchField} />
+			<Outlet />
 		</>
 	)
 }

@@ -23,6 +23,10 @@ header{
 			font-size: 26px;
 			margin-right: 35px;
 			cursor: pointer;
+			.links{
+				text-decoration: none;
+				color: rgb(62, 62, 62);
+			}
 		}
 	}
 	.search{
@@ -114,8 +118,5 @@ header{
 			}
 		}
 	}
-	
-	
-		
 }
 

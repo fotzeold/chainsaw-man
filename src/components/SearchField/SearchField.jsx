@@ -8,12 +8,12 @@ const SearchField = (props) => {
 			{searchedChar.length > 0 ?
 				searchedChar.map((e, i) => {
 					return (
-						<div className="hero" key={i + '00'}>
+						<a href={e.url} target="_blank" className="hero" key={i + '00'}>
 							<div className="hero__image">
 								<img src={e.thumbnail} alt="" />
 							</div>
 							<span>{e.name}</span>
-						</div>
+						</a>
 					)
 				})
 				: null}
